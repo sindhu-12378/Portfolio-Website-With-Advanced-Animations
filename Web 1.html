@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio | Sindhushree</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <!-- Three.js & GSAP Libraries -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+
+  <style>
+    /* Global Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: "Poppins", sans-serif;
+    }
+
+    body {
+      color: #fff;
+      background: #000;
+      overflow-x: hidden;
+    }
+
+    /* 3D Canvas */
+    #bgCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+    }
+
+    /* Navigation */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 0;
+      z-index: 10;
+      text-align: center;
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
+    }
+
+    nav ul li a {
+      text-decoration: none;
+      color: #fff;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav ul li a:hover {
+      color: #00ffe1;
+    }
+
+    /* Hero */
+    .hero {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 0 20px;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    .highlight {
+      color: #00ffe1;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      margin-bottom: 20px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      background: #00ffe1;
+      border: none;
+      color: #000;
+      border-radius: 25px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #00bfae;
+      color: #fff;
+    }
+
+    /* Sections */
+    section {
+      padding: 100px 20px;
+      text-align: center;
+    }
+
+    section h2 {
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+      color: #00ffe1;
+    }
+
+    /* Skills */
+    .skills {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    .skill {
+      margin-bottom: 20px;
+    }
+
+    .bar {
+      background: #222;
+      border-radius: 10px;
+      height: 12px;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00ffe1, #0077ff);
+    }
+
+    /* Projects */
+    .project-cards {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 15px;
+      padding: 20px;
+      width: 250px;
+      transition: transform 0.3s, background 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-10px);
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Contact */
+    form {
+      max-width: 500px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input,
+    textarea {
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      outline: none;
+    }
+
+    form button {
+      background: #00ffe1;
+      color: #000;
+      font-weight: bold;
+      padding: 12px;
+      border-radius: 25px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    form button:hover {
+      background: #00bfae;
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.6);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- 3D Background -->
+  <canvas id="bgCanvas"></canvas>
+
+  <!-- Header -->
+  <header>
+    <nav>
+      <ul>
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section id="home" class="hero">
+    <h1>Hello, I'm <span class="highlight">Sindhushree</span></h1>
+    <p>Web Developer | Creative Designer | Tech Enthusiast</p>
+    <button class="btn">Explore</button>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <h2>About Me</h2>
+    <p>
+      I’m a passionate Computer Science Engineer who builds modern web applications
+      with clean design, smooth animations, and interactive experiences.
+    </p>
+    <img src="https://via.placeholder.com/300" alt="About Me" style="border-radius:15px; margin-top:20px;">
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <h2>My Skills</h2>
+    <div class="skills">
+      <div class="skill"><span>HTML</span><div class="bar"><div class="fill" style="width:90%"></div></div></div>
+      <div class="skill"><span>CSS</span><div class="bar"><div class="fill" style="width:85%"></div></div></div>
+      <div class="skill"><span>JavaScript</span><div class="bar"><div class="fill" style="width:80%"></div></div></div>
+      <div class="skill"><span>React</span><div class="bar"><div class="fill" style="width:75%"></div></div></div>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-cards">
+      <div class="card">
+        <h3>Portfolio Website</h3>
+        <p>Interactive animated portfolio website using Three.js & GSAP.</p>
+      </div>
+      <div class="card">
+        <h3>Data Dashboard</h3>
+        <p>Dynamic data visualization using React and Chart.js.</p>
+      </div>
+      <div class="card">
+        <h3>AI Chatbot</h3>
+        <p>Conversational AI chatbot with natural language understanding.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <h2>Contact Me</h2>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Sindhushree | Built with ❤ using Three.js & GSAP</p>
+  </footer>
+
+  <!-- ===== JavaScript Animations ===== -->
+  <script>
+    // 3D Background
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(
+      75,
+      window.innerWidth / window.innerHeight,
+      0.1,
+      1000
+    );
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.getElementById("bgCanvas"),
+      antialias: true,
+    });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    camera.position.z = 5;
+
+    const particlesCount = 1000;
+    const geometry = new THREE.BufferGeometry();
+    const positions = new Float32Array(particlesCount * 3);
+
+    for (let i = 0; i < particlesCount * 3; i++) {
+      positions[i] = (Math.random() - 0.5) * 10;
+    }
+
+    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+
+    const material = new THREE.PointsMaterial({
+      color: 0x00ffe1,
+      size: 0.02,
+    });
+
+    const particles = new THREE.Points(geometry, material);
+    scene.add(particles);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      particles.rotation.y += 0.001;
+      particles.rotation.x += 0.0005;
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    window.addEventListener("resize", () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    // GSAP Animations
+    gsap.from("header", { y: -100, opacity: 0, duration: 1 });
+    gsap.from(".hero h1", { opacity: 0, y: 50, duration: 1.2, delay: 0.3 });
+    gsap.from(".hero p", { opacity: 0, y: 50, duration: 1, delay: 0.6 });
+    gsap.from(".btn", { opacity: 0, scale: 40, duration: 1, delay: 0 });
+  </script>
+</body>
+</html>
