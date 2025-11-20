@@ -82,3 +82,6 @@ A professionally designed, animated, responsive portfolio webpage with:
 ✔ Smooth animations
 ✔ Clean layout
 ✔ Fully working sections
+
+
+Output pictures:
