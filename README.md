@@ -84,4 +84,10 @@ A professionally designed, animated, responsive portfolio webpage with:
 ✔ Fully working sections
 
 
-Output pictures:
+Output pictures:[](<img width="1335" height="624" alt="Image" src="https://github.com/user-attachments/assets/7bbac827-bf28-4b5d-a6e6-0fc45ee9beef" />
+
+<img width="1349" height="664" alt="Image" src="https://github.com/user-attachments/assets/45319db5-b9ba-41d8-875d-7ee083bbc73c" />
+
+<img width="1328" height="652" alt="Image" src="https://github.com/user-attachments/assets/527c05dd-46cf-4e22-842b-e357e966200d" />
+
+<img width="1341" height="666" alt="Image" src="https://github.com/user-attachments/assets/fdec3b2e-9079-4b7e-a004-ed9866af8200" />)
